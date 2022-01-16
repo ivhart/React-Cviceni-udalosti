@@ -8,8 +8,17 @@ import React from 'react';
 // Po kliknutí na tlačítko vypiš do konzole text
 // „Uživatel chce koupit DOPLŇ_NÁZEV_POLOŽKY“.
 
+const handleClick = (nazev) => {
+  return console.log('Uzivatel chce koupit ' + nazev);
+};
+
 const NakupniPolozka = ({ nazev }) => {
-  return <div>@TODO</div>;
+  return (
+    <div>
+      {nazev}
+      <button onClick={() => handleClick(nazev)}>koupit </button>
+    </div>
+  );
 };
 
 // Zadání 3:
@@ -22,8 +31,11 @@ const Uloha5 = () => {
 
   return (
     <>
-      <NakupniPolozka nazev="hrušky" />
-      <NakupniPolozka nazev="jablka" />
+      <div>
+        {polozky.map((polozka) => {
+          return <NakupniPolozka nazev={polozka} key={polozka} />;
+        })}
+      </div>
     </>
   );
 };
